@@ -1,0 +1,33 @@
+"""Utility functions."""
+import torch
+import os
+
+
+def get_device():
+    """Get the appropriate device (GPU if available, else CPU)."""
+    return torch.device("cuda" if torch.cuda.is_available() else "cpu")
+
+
+def is_colab():
+    """Check if running in Google Colab."""
+    try:
+        import google.colab
+        return True
+    except ImportError:
+        return False
+
+
+def setup_colab():
+    """Setup Google Colab environment."""
+    if is_colab():
+        from google.colab import drive
+        drive.mount('/content/drive')
+        print("✓ Google Drive mounted at /content/drive")
+    return is_colab()
+
+
+def get_data_path():
+    """Get data path (Colab Drive or local)."""
+    if is_colab():
+        return "/content/drive/MyDrive/data"
+    return "./data"
