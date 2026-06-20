@@ -1,15 +1,24 @@
 """Utility functions."""
+from typing import Callable
 import torch
 import os
 
 
-def get_device():
-    """Get the appropriate device (GPU if available, else CPU)."""
+def get_device() -> torch.device:
+    """Get the appropriate device (GPU if available, else CPU).
+    
+    Returns:
+        torch.device: CUDA device if available, otherwise CPU.
+    """
     return torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 
-def is_colab():
-    """Check if running in Google Colab."""
+def is_colab() -> bool:
+    """Check if running in Google Colab.
+    
+    Returns:
+        bool: True if in Colab environment, False otherwise.
+    """
     try:
         import google.colab
         return True
