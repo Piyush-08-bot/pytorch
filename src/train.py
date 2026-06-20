@@ -1,12 +1,18 @@
 """Training logic."""
+from typing import Tuple
 import torch
 import torch.nn as nn
 import torch.optim as optim
 from tqdm import tqdm
 
 
-def train_epoch(model, train_loader, optimizer, criterion, device):
-    """Train for one epoch."""
+def train_epoch(model: nn.Module, train_loader, optimizer: optim.Optimizer, 
+                criterion: nn.Module, device: torch.device) -> float:
+    """Train for one epoch.
+    
+    Returns:
+        Average loss over the epoch.
+    """
     model.train()
     total_loss = 0
     
@@ -24,8 +30,13 @@ def train_epoch(model, train_loader, optimizer, criterion, device):
     return total_loss / len(train_loader)
 
 
-def evaluate(model, val_loader, criterion, device):
-    """Evaluate model on validation set."""
+def evaluate(model: nn.Module, val_loader, criterion: nn.Module, 
+             device: torch.device) -> float:
+    """Evaluate model on validation set.
+    
+    Returns:
+        Average loss over the validation set.
+    """
     model.eval()
     total_loss = 0
     
