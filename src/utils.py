@@ -31,3 +31,8 @@ def get_data_path():
     if is_colab():
         return "/content/drive/MyDrive/data"
     return "./data"
+
+
+def count_parameters(model):
+    """Count total trainable parameters in model."""
+    return sum(p.numel() for p in model.parameters() if p.requires_grad)
