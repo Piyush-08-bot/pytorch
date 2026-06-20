@@ -48,3 +48,9 @@ The notebook (`notebook.ipynb`) includes setup cells that will:
 - Python 3.8+
 - PyTorch 2.0+
 - See `requirements.txt` for full list
+
+## Development Tips
+
+- Use `src.utils.set_seed()` for reproducible results
+- Call `src.utils.count_parameters()` to inspect model size
+- Check device availability with `src.utils.get_device()`
