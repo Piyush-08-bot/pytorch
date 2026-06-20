@@ -4,7 +4,13 @@ import torch.nn as nn
 
 
 class SimpleNN(nn.Module):
-    """A simple neural network for demonstration."""
+    """A simple neural network for demonstration.
+    
+    Args:
+        input_size: Dimension of input features
+        hidden_size: Number of hidden units
+        output_size: Number of output classes
+    """
     
     def __init__(self, input_size=10, hidden_size=64, output_size=2):
         super(SimpleNN, self).__init__()
