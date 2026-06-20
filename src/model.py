@@ -23,3 +23,11 @@ class SimpleNN(nn.Module):
         x = self.relu(x)
         x = self.fc2(x)
         return x
+    
+    def get_config(self):
+        """Return model configuration dictionary."""
+        return {
+            'input_size': self.fc1.in_features,
+            'hidden_size': self.fc1.out_features,
+            'output_size': self.fc2.out_features
+        }
